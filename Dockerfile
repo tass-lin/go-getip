@@ -1,7 +1,7 @@
 ARG GO_VERSION=1.14.3
 ARG ALPINE_VERSION=3.11
 
-FROM tasslin/go:${GO_VERSION}-alpine${ALPINE_VERSION}-1001 AS builder
+FROM tasslin/go:${GO_VERSION}-alpine${ALPINE_VERSION} AS builder
 
 RUN apk --update add build-base git
 
