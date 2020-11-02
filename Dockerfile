@@ -20,6 +20,8 @@ RUN go build -o ./app ./main.go
 
 FROM tasslin/go:${GO_VERSION}-alpine${ALPINE_VERSION}-1001
 
+USER appuser
+
 WORKDIR /go/src/app
 
 COPY --from=builder /go/src/app/app .
