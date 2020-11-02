@@ -18,11 +18,14 @@ RUN go build -o ./app ./main.go
 
 # nonroot
 
-FROM tasslin/go:${GO_VERSION}-alpine${ALPINE_VERSION}-1001
+FROM tasslin/go:${GO_VERSION}-alpine${ALPINE_VERSION}
 
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
 WORKDIR /go/src/app
+
+COPY ./docker/supervisord-nonroot.conf /etc/supervisord.conf
 
 COPY --from=builder /go/src/app/app .
 
