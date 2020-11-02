@@ -29,4 +29,6 @@ COPY ./docker/supervisord-nonroot.conf /etc/supervisord.conf
 
 COPY --from=builder /go/src/app/app .
 
-CMD /usr/bin/supervisord -n -c /etc/supervisord.conf;
+# CMD /usr/bin/supervisord -n -c /etc/supervisord.conf;
+
+CMD ./app
